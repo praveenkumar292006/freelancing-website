@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - SkillConnect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family:Arial;
+      background:linear-gradient(135deg,#00b09b,#00ff95);
+    }
+    .card{
+      background:white;
+      padding:25px;
+      width:320px;
+      border-radius:10px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+    input{
+      width:100%;
+      padding:8px;
+      margin:8px 0;
+      border-radius:5px;
+      border:1px solid #ccc;
+    }
+    button{
+      width:100%;
+      padding:8px;
+      border:none;
+      background:#00a884;
+      color:white;
+      border-radius:5px;
+      cursor:pointer;
+    }
+    a{
+      font-size:14px;
+      text-decoration:none;
+      color:blue;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>SkillConnect</h2>
+  <h3>Login</h3>
+
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <p style="margin-top:10px;">
+    <a href="register.html">Create new account</a>
+  </p>
+</div>
+
+<script>
+function login(){
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  const storedUser = localStorage.getItem("username");
+  const storedPass = localStorage.getItem("password");
+  const role = localStorage.getItem("role");
+
+  if(user !== storedUser || pass !== storedPass){
+    alert("Invalid credentials");
+    return;
+  }
+
+  if(role === "Freelancer"){
+    window.location.href = "freelancer.html";
+  } else {
+    window.location.href = "recruiter.html";
+  }
+}
+</script>
+
+</body>
+</html>
